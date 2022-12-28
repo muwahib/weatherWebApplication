@@ -11,7 +11,7 @@ let weatherCity = async (city) => {
     return weather;
 }
 
-weatherCity(...city)
+weatherCity("input")
 .then(weather => getWeather(weather))
 .catch(err => console.log('rejected:', err.message));
 
@@ -37,11 +37,13 @@ function getWeather(weather){
     `;
 }
 
-var searchInput = document.getElementById('city');
-console.log(typeof(searchInput));
+var search = document.getElementById('btn');
 search.addEventListener('click', (e) => {
     e.preventDefault();
-    if(searchInput !== ""){
+    var searchInput = document.getElementById('city');
+    if(searchInput.value !== ""){
+        var input = JSON.stringify(searchInput);
+        weatherCity("input");
     }
    
 });
